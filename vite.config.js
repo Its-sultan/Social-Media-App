@@ -1,0 +1,56 @@
+// import { defineConfig } from 'vite'
+// import react from '@vitejs/plugin-react'
+// import tailwindcss from '@tailwindcss/vite         '
+
+// // https://vite.dev/config/
+// export default defineConfig({
+//   plugins: [
+//     react(),
+//     tailwindcss()
+
+//   ],
+// })
+
+
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss({
+      config: {
+        content: [
+          './index.html',
+          './src/**/*.{js,ts,jsx,tsx}',
+        ],
+        theme: {
+          extend: {
+            animation: {
+              "fade-in-down": "fadeInDown 0.8s ease-out",
+              "fade-in-up": "fadeInUp 0.8s ease-out",
+              "rotate": "rotate 3s linear infinite",
+            },
+            keyframes: {
+              fadeInDown: {
+                "0%": { opacity: 0, transform: "translateY(-20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
+              fadeInUp: {
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
+              rotate: {
+                "0%": { transform: "rotate(0deg)" },
+                "100%": { transform: "rotate(360deg)" },
+              },
+            },
+          },
+        },
+        plugins: [],
+      }
+    })
+  ]
+});
