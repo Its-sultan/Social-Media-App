@@ -142,14 +142,15 @@ import SinglePost from './pages/SinglePost'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Logout from './pages/Logout'
+import { Provider } from 'react-redux'
 
 const App = () => {
 
 const router = createBrowserRouter([
   {path: '/', element: <RootLayout />, errorElement:<ErrorPage/>, children:[
     {index: true, element: <Home/>},
-    {path: "message", element: <MessageList/>},
-    {path: "message/receiverId", element: <Messages />},
+    {path: "messages", element: <MessageList/>},
+    {path: "messages/receiverId", element: <Messages />},
     {path: "bookmarks", element: <Bookmarks />},
     {path: "users/:id", element: <Profile />},
     {path: "posts/:id", element: <SinglePost />},
@@ -163,7 +164,7 @@ const router = createBrowserRouter([
 
 
   return (
-    <RouterProvider router={router} />
+   <Provider><RouterProvider router={router} /></Provider>
   )
 }
 
