@@ -144,7 +144,8 @@ import Register from './pages/Register'
 import Logout from './pages/Logout'
 import { Provider } from 'react-redux'
 import store from './stores/store'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
 
 const router = createBrowserRouter([
@@ -166,7 +167,20 @@ const router = createBrowserRouter([
 
   return (
     <>
-   <Provider store={store}><RouterProvider router={router} /></Provider>
+   <Provider store={store}>
+    <RouterProvider router={router} /> 
+    <ToastContainer
+     position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+    
+    />
+    </Provider>
    </>
   )
 }

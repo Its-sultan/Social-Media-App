@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock, FaUser,  } from 'react-icons/fa';
 import axios from 'axios';
 import { userActions } from '../stores/user-slice';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -29,11 +31,12 @@ const Login = () => {
        if(response.status === "200"){
         dispatch(userActions.changeCurrentUser(response?.data))
         localStorage.setItem("currentUser", JSON.stringify(response?.data));
+        toast.success("Login successful!");
         navigate("/");
        }
 
     } catch (error) {
-      setError(error.response?.data?.message || "Something went wrong");
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   }
 

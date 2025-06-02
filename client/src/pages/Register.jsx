@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock, FaUser,  } from 'react-icons/fa';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const Register = () => {
   const [userData, setUserData] = useState({fullName: "", email: "",  password: "", confirmPassword: ""})
   const [error, setError] = useState("")
@@ -23,11 +24,12 @@ const Register = () => {
 
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/users/register`, userData);
-      if(response.status === "OK"){
+      if(response.status === "201"){
+        toast.success("Registration successful!");
         navigate("/login");
       }
     } catch (error) {
-      setError(error.response?.data?.message || "Something went wrong");
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   }
 
@@ -42,7 +44,7 @@ const Register = () => {
 
   return (
     <section className=" flex justify-center items-center h-screen bg-gradient-to-r from-gray-100 to-gray-200">
-       <div className="register_container bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+       <div className="register_container bg-white p-8 rounded-lg shadow-lg w-full max-w-md mt-10">
     
 
           <h2 className='text-3xl text-teal-600 font-bold text-center mb-6'>Sign up</h2>
