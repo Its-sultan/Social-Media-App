@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock, FaRegUserCircle, FaUser,  } from 'react-icons/fa';
-import { ImSpinner, ImSpinner3 } from 'react-icons/im';
+import { ImSpinner, ImSpinner3, ImSpinner4, ImSpinner5, ImSpinner6, ImSpinner7, ImSpinner8, ImSpinner9 } from 'react-icons/im';
 import axios from 'axios';
 import { userActions } from '../stores/user-slice';
 import { useDispatch } from 'react-redux';
@@ -94,12 +94,12 @@ const Login = () => {
              </div>
 
 
-             <button type="submit" className=' w-full flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white py-2 rounded-md transition duration-300'
+             <button type="submit" className={` w-full flex items-center justify-center gap-2  bg-teal-600  text-white py-2 rounded-md transition duration-300 ${loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-teal-700'} `}
               disabled={loading}> 
               
               {loading ? (
                 <>
-              <ImSpinner3 className="animate-spin text-center " />
+              <ImSpinner4 className="animate-spin text-center " />
               Signing in...
               </>
             ) : (
